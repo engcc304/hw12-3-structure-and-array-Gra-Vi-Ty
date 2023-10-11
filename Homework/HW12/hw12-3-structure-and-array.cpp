@@ -86,7 +86,6 @@ int main() {
         }
 
         if ( ask == 'y' || ask == 'Y') {
-            printf( "%d" , n ) ;
             printf( "----\n" ) ;
             printf( "Employee Name : \n" ) ;
             scanf( "%s", group[n].name ) ;
