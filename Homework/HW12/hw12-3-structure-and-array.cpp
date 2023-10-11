@@ -42,3 +42,60 @@
 */
 
 //TODO: #21 output money should in decimal format (eg. 120,200,340.42).
+
+#include <stdio.h>
+
+struct data {
+    char name[50] ;
+    float money ; 
+    int year ;
+} ;
+
+int main() {
+    char ask ;
+    int n = 0 ;
+    do {
+        data group[50] ;
+
+        printf( "Do you want to Enter Employee Information? (y/n) : \n" ) ;
+        scanf( " %c", &ask ) ;
+
+        if( ask == 'n' || ask == 'N'){
+            for( int i = 0 ; i < n ; i++ ) {
+                //หาคนรวย
+                for( int j = i + 1 ; j < n ; j++ ) {
+                    if( group[i].money < group[j].money ) {
+                        struct data total = group[i] ;
+                        group[i] = group[j] ;
+                        group[j] = total ;
+                    }
+                }
+            }
+
+            int Salary = 0 ;
+            for( int i = 0 ; i < n ; i++ ) {
+            Salary += group[i].money;
+            }
+            printf( "Average of Salary : %d Bath\n", Salary / n) ;
+            printf( "Payment of every month : %d Bath\n", Salary ) ;
+            printf( "----------------------------------------\n" ) ;
+            printf( "** Most duration in this business **\n" ) ;
+            printf( "Name : %s (%d Years)\n", group[0].name, group[0].year ) ;
+            printf( "Salary : %.2f Bath\n", group[0].money ) ;
+            break ;
+        }
+
+        if ( ask == 'y' || ask == 'Y') {
+            printf( "----\n" ) ;
+            printf( "Employee Name : \n" ) ;
+            scanf( "%s", group[n].name ) ;
+            printf( "Salary (Bath/Month) : \n" ) ;
+            scanf( "%f", &group[n].money ) ;
+            printf( "Duration (Year) : \n" ) ;
+            scanf( "%d", &group[n].year ) ;
+            n = n + 1 ;
+        }
+    } while ( ask != 'n' && ask != 'N' ) ;
+
+    return 0 ;
+}
